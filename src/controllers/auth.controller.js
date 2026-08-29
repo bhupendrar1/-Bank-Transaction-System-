@@ -1,6 +1,7 @@
 const userModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const emailService = require('../services/email.service');
 
 
 
@@ -49,6 +50,8 @@ async function UserRegisterController(req, res) {
           },
           token
          });
+
+         await emailService.SendRegistrationEmail(user.email, user.name);
 }
 
 
