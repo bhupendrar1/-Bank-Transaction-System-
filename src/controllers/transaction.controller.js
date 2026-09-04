@@ -162,15 +162,13 @@ async function createTransaction(req, res) {
     */
 
    await emailService.sendTransactionEmail(req.user.email, req.user.name, amount, toAccount )
-
+  
     return res.status(201).json({
         message: "Transaction completed successfully",
         transaction: transaction
     })
-
-
+    
 }
-
 
 
 
