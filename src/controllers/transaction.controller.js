@@ -190,6 +190,19 @@ async function createInitialFundsTransaction(req, res) {
     })
   }
 
+const fromUserAccount = await accountModel.findOne({
+  systemUser: true,
+  user: req.user._id
+})
+
+if(!fromUserAccount) {
+  return res.status(404).json({
+    message: 'System user account not found'
+  })
+}
+
+
+
 }
 
 module.exports = {
